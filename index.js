@@ -1,23 +1,11 @@
 import {Cliente} from "./Cliente.js"
 import {Conta} from "./Conta.js"
 
-const cl1 = new Cliente();
+const cl1 = new Cliente("Luciano", "00011122233");
+const cl2 = new Cliente("Paris", "11100022244");
 
-cl1.nome = "Luciano";
-cl1.cpf = "00011122233";
-
-const cl2 = new Cliente();
-cl2.nome = "Paris"
-cl2.cpf = "11100022244"
-
-const co1 = new Conta();
-const co2 = new Conta();
-
-co1.numero = 1;
-co1.cliente = cl1;
-
-co2.numero = 2;
-co2.cliente = cl2;
+const co1 = new Conta(cl1);
+const co2 = new Conta(cl2);
 
 console.log(co1.toString());
 console.log(co2.toString());
