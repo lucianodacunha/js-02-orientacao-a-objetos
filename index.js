@@ -1,53 +1,40 @@
-// criando minha primeira classe
+import {Cliente} from "./Cliente.js"
+import {Conta} from "./Conta.js"
 
-class Cliente {
-  nome;
-  cpf;
-}
+const cl1 = new Cliente();
 
-class Conta {
-  numero;
-  cliente;
-  _saldo = 0;
+cl1.nome = "Luciano";
+cl1.cpf = "00011122233";
 
-  sacar (valor){
-    console.log(`Sacando ${valor}.`);
-    if (valor > this._saldo ) {
-      console.log(`Saldo insuficiente.`);
-      return; // early return
-    }
+const cl2 = new Cliente();
+cl2.nome = "Paris"
+cl2.cpf = "11100022244"
 
-    this._saldo -= valor;    
-  }
+const co1 = new Conta();
+const co2 = new Conta();
 
-  depositar(valor){
-    console.log(`Depositando ${valor}.`);
-    if (valor <= 0){
-      console.log(`Valor incorreto.`);
-      return;
-    }
-    
-    this._saldo += valor;
+co1.numero = 1;
+co1.cliente = cl1;
 
-  }
-}
+co2.numero = 2;
+co2.cliente = cl2;
 
-const cliente = new Cliente();
+console.log(co1.toString());
+console.log(co2.toString());
 
-cliente.nome = "Luciano";
-cliente.cpf = "00011122233";
+co1.sacar(1100.0);
+console.log(co1.toString());
+console.log(co2.toString());
 
-const conta = new Conta();
+co1.depositar(100.0);
+co1.depositar(-100.0);
+co2.depositar(500.0);
 
-conta.numero = 1;
-conta.cliente = cliente;
+console.log(co1.toString());
+console.log(co2.toString());
 
-console.log(conta);
+co1.sacar(10);
+co2.transferir(co1, 100.0);
 
-conta.sacar(1100.0);
-console.log(conta);
-
-conta.depositar(100.0);
-conta.depositar(-100.0);
-
-console.log(conta);
+console.log(co1.toString());
+console.log(co2.toString());
